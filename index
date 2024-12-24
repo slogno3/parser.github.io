@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <title>ПАРСЕР</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="container">
+                <div class="header_row">
+                    <div class="header_logo">
+                        ПАРСЕР
+                    </div>
+                    <div class="header_links">
+                        <div class="link_row">
+                            <a href="#" class="link_item blue_btn">
+                                Вакансии
+                            </a>
+                            <a href="#" class="link_item modal_closer_link border_btn">
+                                Вернуться к парсеру
+                            </a>
+                            <a href="index_2.html" class="link_item border_btn">
+                                Резюме
+                            </a>
+                        </div>
+                        <a href="settings.html" class="settings border_btn">
+                            Настройки
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- OPTIONS -->
+        <section class="options">
+            <div class="container">
+                <div class="options_row">
+                    <div class="option_item">
+                        <div class="option_body" id="box_shadow_second">
+                            <div class="item_title">
+                                <span>Добавьте профессию/должность</span>
+                            </div>
+                            <div class="add_option">
+                                <!-- <input type="text" id="targetInputSecond"> -->
+                                <div id="selectedValuesSecond"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                    <rect width="35" height="35" rx="10" fill="#4A6EFF"/>
+                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9"/>
+                                </svg>
+                            </div>
+
+                            <ul class="option_list" id="option_list_second">
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Frontend</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Backend</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item_footer">
+                            <div class="item_title">
+                                Период
+                            </div>
+
+                            <div class="month_row">
+                                <label class="month_item">
+                                    <input type="radio" name="month_item" id="" checked>
+                                   <span> 1 Месяц</span>
+                                </label>
+                                <label class="month_item">
+                                    <input type="radio" name="month_item" id="">
+                                    <span>2 Месяц</span>
+                                </label>
+                                <label class="month_item">
+                                    <input type="radio" name="month_item" id="">
+                                    <span>3 Месяц</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option_item second_item">
+                        <div class="option_body" id="box_shadow">
+                            <div class="item_title">
+                                <span>Добавьте профессию/должность</span>
+                            </div>
+                            <div class="add_option">
+                                <!-- <input type="text" id="targetInput"> -->
+                                <div id="selectedValues"></div>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                    <rect width="35" height="35" rx="10" fill="#4A6EFF"/>
+                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9"/>
+                                </svg>
+                            </div>
+
+                            <ul class="option_list" id="option_list">
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Москва</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Екатеринбург </span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Пермь </span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Иваново </span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Курск</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Владимир</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Казань</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Калуга</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Ростов-на-Дону</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Красноярк</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Калуга</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Ростов-на-Дону</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Красноярк</span>
+                                </li>
+                                <li>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                                    </svg>
+                                    <span> Калуга</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="item_footer">
+                            <div class="footer_btn">
+                                <button class="blue_btn">
+                                    Сформировать отчет
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- OPTIONS END -->
+
+        <!-- SETTINGS MODAL -->
+        <div class="settings_modal">
+            <div class="modal_block">
+
+            </div>
+        </div>
+        <!-- SETTINGS MODAL END -->
+    </div>
+
+    <!-- JQUERY -->
+     <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- JQUERY END -->
+    <!-- CUSTOM JS -->
+    <script src="main.js"></script>
+</body>
+</html>
