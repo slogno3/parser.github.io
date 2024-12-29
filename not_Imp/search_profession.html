@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сохранение текста в список</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #000; /* Чёрный фон */
+            color: white;
+            display: flex;
+            justify-content: center;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+            background-color: #333;
+            color: white;
+        }
+        .button-container {
+            display: inline-block;
+            cursor: pointer;
+        }
+        ul {
+            margin-top: 20px;
+            list-style-type: none; /* Убираем точки в списке */
+            padding: 0;
+        }
+        svg {
+            vertical-align: middle;
+        }
+        .delete-button {
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .list-item-container {
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="textInput" placeholder="Введите текст...">
+    <div class="button-container" onclick="addText()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+            <rect width="35" height="35" rx="10" fill="#4A6EFF"/>
+            <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+            <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9"/>
+        </svg>
+    </div>
+
+    <ul id="textList">
+        <!-- Здесь будут добавляться элементы списка -->
+    </ul>
+    <script>
+        function addText() {
+            const input = document.getElementById('textInput');
+            const text = input.value.trim();
+            
+            if (text) {
+                const list = document.getElementById('textList');
+                const listItemContainer = document.createElement('div');
+                listItemContainer.classList.add('list-item-container');
+
+                const listItem = document.createElement('li');
+                listItem.textContent = text;
+
+                const deleteButton = document.createElement('span');
+                deleteButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none"> <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/><rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/></svg>';
+                deleteButton.classList.add('delete-button');
+                deleteButton.onclick = function() {
+                    list.removeChild(listItemContainer);
+                };
+
+                listItemContainer.appendChild(deleteButton);
+                listItemContainer.appendChild(listItem);
+                list.appendChild(listItemContainer);
+                input.value = '';
+            } else {
+                alert('Введите текст!');
+            }
+        }
+    </script>
+</body>
+</html>
