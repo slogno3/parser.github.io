@@ -67,7 +67,7 @@ header .header_logo{
 .header_links::after{
     content: '';
     position: absolute;
-    width: 10000%;
+    width: 100%; 
     height: 5px;
     background: #4A6EFF;
     left: -1000%;
