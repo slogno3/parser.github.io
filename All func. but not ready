@@ -81,8 +81,15 @@
         }
 
         .delete-button {
-            margin-right: 10px;
             cursor: pointer;
+            background-color: transparent;
+            border: none;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .city-text {
+            margin-left: 5px;
         }
 
         .list-item-container {
@@ -104,9 +111,16 @@
         }
 
         .dropdown {
-            position: relative;
-            width: 100%;
-        }
+    position: relative;
+    display: flex;
+    align-items: center; /* Центрируем элементы по вертикали */
+    width: 100%; /* Убираем фиксированную ширину */
+}
+
+#inputField {
+    width: calc(100% - 45px); /* Оставляем место для кнопки */
+    margin-right: 10px; /* Добавляем отступ между полем ввода и кнопкой */
+}
 
         .dropdown-list-wrapper {
             border: 2px solid white;
@@ -119,9 +133,14 @@
         }
 
         .dropdown-content {
-            display: block;
-            padding: 0;
-            margin: 0;
+            display: none;
+            position: absolute;
+            background-color: #000;
+            border: 1px solid #ccc;
+            width: 100%;
+            z-index: 1;
+            max-height: 240px; /* Ограничение высоты для 6 элементов */
+            overflow-y: auto;  /* Прокрутка если элементов больше 6 */
         }
 
         .dropdown-content div {
@@ -131,6 +150,29 @@
 
         .dropdown-content div:hover {
             background-color: #ddd;
+        }
+
+        .add-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+        .added-cities {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .added-cities li {
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
         }
 
         .footer-container {
@@ -255,19 +297,17 @@
             <div class="dropdown-wrapper">
                 <div class="dropdown">
                     <input type="text" id="inputField" placeholder="Начните вводить..." onkeyup="filterFunction()">
-                    <div id="dropdownList" class="dropdown-list-wrapper">
-                        <div class="dropdown-content">
-                            <div id="sity_1">Абакан</div>
-                            <div id="sity_2">Абинск</div>
-                            <div id="sity_3">Агата</div>
-                            <div id="sity_4">Агинское</div>
-                            <div id="sity_5">Адлер</div>
-                            <div id="sity_6">Москва</div>
-                            <div id="sity_7">Санкт-Петербург</div>
-                            <div id="sity_8">Новосибирск</div>
-                        </div>
-                    </div>
+                    <button class="add-button" onclick="addNewOption()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                            <rect width="35" height="35" rx="10" fill="#4A6EFF"/>
+                            <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                            <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9"/>
+                        </svg>
+                    </button>
+                    <div id="dropdownList" class="dropdown-content"></div>
                 </div>
+            
+                <ul id="addedCitiesList" class="added-cities"></ul>
             </div>
 
             <div class="item_footer">
@@ -329,6 +369,102 @@
             } else {
                 document.getElementById('dropdownList').classList.remove('show');
             }
+        }
+
+        // for sity's
+        const inputField = document.getElementById('inputField');
+        const dropdownList = document.getElementById('dropdownList');
+        const addedCitiesList = document.getElementById('addedCitiesList');
+
+        const cities = [
+            "Адлер", "Адыгейск", "Азов", "Алагир", "Алапаевск", "Алдан", "Александров",
+            "Александров Гай", "Александровск", "Александровск-Сахалинский", "Алексин", "Алупка",
+            "Алушта", "Амдерма", "Амурск", "Анадырь", "Анапа", "Ангарск", "Андреаполь", "Анива",
+            "Апатиты", "Апрелевка", "Апшеронск", "Аргаяш", "Ардон", "Арзамас", "Армавир", "Арсеньев",
+            "Артем", "Архангельск"
+        ];
+
+        inputField.addEventListener('focus', () => {
+            if (inputField.value.trim() !== "") {
+                dropdownList.style.display = 'block';
+            }
+        });
+        
+        inputField.addEventListener('blur', () => {
+            setTimeout(() => dropdownList.style.display = 'none', 200);
+        });
+
+        dropdownList.addEventListener('click', (e) => {
+            if (e.target.tagName === 'DIV') {
+                inputField.value = e.target.textContent;
+                dropdownList.style.display = 'none';
+            }
+        });
+
+        function filterFunction() {
+            const filter = inputField.value.toUpperCase();
+            dropdownList.innerHTML = "";  // Очищаем список перед каждой фильтрацией
+            
+            const filteredOptions = cities.filter(option => 
+                option.toUpperCase().indexOf(filter) > -1
+            );
+
+            filteredOptions.forEach(option => {
+                const div = document.createElement('div');
+                div.textContent = option;
+                dropdownList.appendChild(div);
+            });
+
+            dropdownList.style.display = filteredOptions.length > 0 ? 'block' : 'none';
+        }
+
+        function addNewOption() {
+            const newCity = inputField.value.trim();
+            if (newCity && !isCityExists(newCity)) {
+                // Добавляем новый город в список добавленных городов
+                const newCityItem = document.createElement('li');
+                
+                // Создаём кнопку для удаления города
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'delete-button';
+                deleteButton.innerHTML = ` 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 35 35" fill="none">
+                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                    </svg>`;
+                deleteButton.onclick = () => removeCity(newCityItem);
+
+                // Создаём текст с городом и добавляем # перед ним
+                const cityText = document.createElement('span');
+                cityText.className = 'city-text';
+                cityText.textContent = `# ${newCity}`;
+
+                // Добавляем кнопку удаления и текст города в элемент города
+                newCityItem.appendChild(deleteButton);
+                newCityItem.appendChild(cityText);
+
+                addedCitiesList.appendChild(newCityItem);
+
+                // Очищаем поле ввода
+                inputField.value = '';
+                dropdownList.style.display = 'none';
+            } else {
+                alert('Город уже существует или введено пустое значение!');
+            }
+        }
+
+        function isCityExists(cityName) {
+            const addedCities = addedCitiesList.getElementsByTagName('li');
+            for (let i = 0; i < addedCities.length; i++) {
+                if (addedCities[i].textContent.replace(/\s+/g, '') === `#${cityName.replace(/\s+/g, '')}`) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function removeCity(cityElement) {
+            addedCitiesList.removeChild(cityElement);
         }
     </script>
 </body>
