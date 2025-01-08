@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parser</title>
+    <link rel="stylesheet" href="Not ready.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <div class="input-container-wrapper">
+                <div class="input-container">
+                    <input type="text" id="textInput" placeholder="Введите текст...">
+                    <div class="button-container" onclick="addText()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                            <rect width="35" height="35" rx="10" fill="#4A6EFF"/>
+                            <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                            <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9"/>
+                        </svg>
+                    </div>
+                </div>
+                <ul id="textList">
+                    <!-- Здесь будут добавляться элементы списка -->
+                </ul>
+            </div>
+
+            <div class="footer-container">
+                <div class="month-row-wrapper">
+                    <div class="month_row">
+                        <label class="month_item">
+                            <input type="radio" name="month_item" id="" checked>
+                            <span>1 Месяц</span>
+                        </label>
+                        <label class="month_item">
+                            <input type="radio" name="month_item" id="">
+                            <span>2 Месяц</span>
+                        </label>
+                        <label class="month_item">
+                            <input type="radio" name="month_item" id="">
+                            <span>3 Месяц</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="dropdown-wrapper">
+                <div class="dropdown">
+                    <input type="text" id="inputField" placeholder="Начните вводить..." onkeyup="filterFunction()">
+                    <button class="add-button" onclick="addNewOption()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                            <rect width="35" height="35" rx="10" fill="#4A6EFF"/>
+                            <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                            <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9"/>
+                        </svg>
+                    </button>
+                    <div id="dropdownList" class="dropdown-content"></div>
+                </div>
+            
+                <ul id="addedCitiesList" class="added-cities"></ul>
+            </div>
+
+            <div class="item_footer">
+                <div class="footer_btn">
+                    <button class="blue_btn">
+                        Сформировать отчет
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="Not ready.js"></script>
+</body>
+</html>
