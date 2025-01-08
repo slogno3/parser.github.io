@@ -1,0 +1,279 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #232632;
+    color: white;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1500px;
+    justify-content: space-between;
+    padding: 0 calc(100vw / 8);
+    gap: calc(100vw / 16); /* Разделение колонок */
+}
+
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;  /* Убедимся, что обе колонки растягиваются одинаково */
+    max-width: 50%; /* Задаем максимальную ширину для обеих колонок */
+}
+
+.input-container-wrapper, .footer-container, .dropdown-wrapper, .item_footer {
+    width: 100%; /* Обеспечивает одинаковую ширину для всех этих элементов */
+}
+
+.input-container-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    background-color: #000;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 100%;
+    margin-right: 10px;
+    background-color: #525357;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    flex-grow: 1;
+}
+
+.button-container {
+    cursor: pointer;
+}
+
+ul {
+    margin-top: 0;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+}
+
+/* Обновим размер delete-button для addedCitiesList */
+.delete-button {
+cursor: pointer;
+background-color: transparent;
+border: none;
+padding: 3px; /* Уменьшаем отступы */
+width: 25px;  /* Уменьшаем ширину */
+height: 25px; /* Уменьшаем высоту */
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
+.city-text {
+    margin-left: 5px;
+}
+
+.list-item-container {
+    display: flex;
+    align-items: center;
+}
+
+li {
+    flex-grow: 1;
+}
+
+.dropdown-wrapper {
+display: flex;
+flex-direction: column;
+padding: 15px; /* То же padding, что и в .input-container-wrapper */
+border: 2px solid white; /* Устанавливаем одинаковую рамку */
+border-radius: 15px; /* Устанавливаем одинаковые скругления */
+background-color: #000;
+width: 100%; /* Растягиваем на всю доступную ширину */
+margin-bottom: 20px; /* Если нужно оставить отступ снизу */
+}
+
+.dropdown {
+position: relative;
+display: flex;
+align-items: center; /* Центрируем элементы по вертикали */
+width: 100%; /* Убираем фиксированную ширину */
+}
+
+#inputField {
+width: calc(100% - 45px); /* Оставляем место для кнопки */
+margin-right: 10px; /* Добавляем отступ между полем ввода и кнопкой */
+}
+
+.dropdown-list-wrapper {
+    border: 2px solid white;
+    border-radius: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+    background-color: #fff;
+    z-index: 1;
+    display: block;
+}
+
+.dropdown-content {
+position: absolute; /* Позиционируем относительно .dropdown-wrapper */
+top: 100%; /* Располагаем его сразу под input */
+left: 0;
+right: 0;
+background-color: #000;
+border: 1px solid #ccc;
+max-height: 240px; /* Ограничение высоты для 6 элементов */
+overflow-y: auto;  /* Прокрутка если элементов больше 6 */
+z-index: 1;
+display: none; /* По умолчанию скрыт */
+}
+
+.dropdown-content div {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.dropdown-content div:hover {
+    background-color: #ddd;
+}
+
+.add-button {
+cursor: pointer;
+background-color: transparent;
+border: none;
+display: inline-block;
+margin-left: 10px;
+padding: 5px;
+}
+
+.added-cities {
+    margin-top: 20px;
+    list-style-type: none;
+    padding: 0;
+}
+
+.added-cities li {
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.footer-container {
+display: flex;
+gap: 20px;
+justify-content: space-between;
+width: 100%;
+padding: 15px; /* То же самое padding, что и в .input-container-wrapper */
+border: 2px solid white; /* Устанавливаем такую же рамку */
+border-radius: 15px; /* Устанавливаем одинаковые скругления */
+background-color: #000;
+margin-top: 20px; /* Если нужно добавить отступ сверху */
+}
+
+.item_footer {
+display: flex;
+justify-content: center;
+padding: 15px; /* Устанавливаем тот же padding, что и у .footer-container */
+border: 2px solid white; /* Устанавливаем такую же рамку */
+border-radius: 15px; /* Устанавливаем одинаковые скругления */
+background-color: #000;
+width: 100%; /* Растягиваем на всю доступную ширину */
+margin-top: 20px; /* Если нужно добавить отступ сверху */
+box-shadow: 0 4px 10px 1px rgba(0, 0, 0, .2); /* Добавляем тень, если нужно */
+}
+
+.month-row-wrapper {
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 15px;
+border-radius: 15px;
+background-color: #000;
+width: 100%;
+height: 70px;
+/* Убираем рамку, просто удаляем или закомментируем следующую строку */
+/* border: 2px solid white; */
+}
+
+.month_row {
+    display: flex;
+    gap: 39px;
+    font-size: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.month_row .month_item {
+    color: #E1E3E6;
+    font-family: Inter;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.month_row .month_item input {
+    display: none;
+}
+
+.month_row .month_item input:checked ~ span {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background: #4A6EFF;
+}
+
+.month_row .month_item span {
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.item_footer {
+    display: flex;
+    justify-content: center;
+    padding: 25px 30px 40px 20px;
+    border: 1px solid #525357;
+    box-shadow: 0 4px 10px 1px rgba(0, 0, 0, .2);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.blue_btn {
+    color: #E1E3E6;
+    font-family: Inter;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    border-radius: 10px;
+    border: 5px solid #4A6EFF;
+    background: #4A6EFF;
+    padding: 15px 20px;
+    display: inline-flex;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    justify-content: center;
+}
+.footer_btn .blue_btn {
+    font-size: 20px; /* Уменьшаем размер шрифта */
+    padding: 10px 15px; /* Уменьшаем отступы внутри кнопки */
+}  
