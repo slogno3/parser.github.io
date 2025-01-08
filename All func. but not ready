@@ -85,9 +85,9 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
-    padding: 5px;
-    width: 35px; /* Устанавливаем одинаковую ширину */
-    height: 35px; /* Устанавливаем одинаковую высоту */
+    padding: 3px; /* Уменьшаем отступы */
+    width: 25px;  /* Уменьшаем ширину */
+    height: 25px; /* Уменьшаем высоту */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -280,8 +280,10 @@
             width: 100%;
             justify-content: center;
         }
-
-        
+        .footer_btn .blue_btn {
+            font-size: 20px; /* Уменьшаем размер шрифта */
+            padding: 10px 15px; /* Уменьшаем отступы внутри кнопки */
+        }   
     </style>
 </head>
 <body>
@@ -351,33 +353,34 @@
     </div>
 
     <script>
-        function addText() {
-            const input = document.getElementById('textInput');
-            const text = input.value.trim();
-            
-            if (text) {
-                const list = document.getElementById('textList');
-                const listItemContainer = document.createElement('div');
-                listItemContainer.classList.add('list-item-container');
+function addText() {
+    const input = document.getElementById('textInput');
+    const text = input.value.trim();
+    
+    if (text) {
+        const list = document.getElementById('textList');
+        const listItemContainer = document.createElement('div');
+        listItemContainer.classList.add('list-item-container');
 
-                const listItem = document.createElement('li');
-                listItem.textContent = text;
+        const listItem = document.createElement('li');
+        listItem.textContent = ` # ${text}`;  // Добавляем # перед текстом
 
-                const deleteButton = document.createElement('span');
-                deleteButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none"> <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/><rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/></svg>';
-                deleteButton.classList.add('delete-button');
-                deleteButton.onclick = function() {
-                    list.removeChild(listItemContainer);
-                };
+        const deleteButton = document.createElement('span');
+        deleteButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none"> <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/><rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/></svg>';
+        deleteButton.classList.add('delete-button');
+        deleteButton.onclick = function() {
+            list.removeChild(listItemContainer);
+        };
 
-                listItemContainer.appendChild(deleteButton);
-                listItemContainer.appendChild(listItem);
-                list.appendChild(listItemContainer);
-                input.value = '';
-            } else {
-                alert('Введите текст!');
-            }
-        }
+        listItemContainer.appendChild(deleteButton);
+        listItemContainer.appendChild(listItem);
+        list.appendChild(listItemContainer);
+        input.value = '';
+    } else {
+        alert('Введите текст!');
+    }
+}
+
 
         function filterFunction() {
             const filter = document.getElementById('inputField').value.toUpperCase();
