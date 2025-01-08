@@ -142,7 +142,7 @@ header .header_logo{
     margin-bottom: 40px;
 }
 
-.options .option_item .add_option #selectedValuesSecond{
+.input_list{
     width: 100%;
     padding: 8px 5px;
     border-radius: 10px;
@@ -161,8 +161,8 @@ header .header_logo{
     overflow-x: auto;
     gap: 10px;
     height: 48px;
-    
 }
+
 #selectedValuesSecond::-webkit-scrollbar {
     display: none;
 }

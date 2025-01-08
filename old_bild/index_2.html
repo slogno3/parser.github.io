@@ -43,31 +43,18 @@
                             <span>Добавьте профессию/должность</span>
                         </div>
                         <div class="add_option">
-                            <!-- <input type="text" id="targetInputSecond"> -->
-                            <div id="selectedValuesSecond"></div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                <rect width="35" height="35" rx="10" fill="#4A6EFF"/>
-                                <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9"/>
-                            </svg>
+                            <input type="text" class="input_list" id="keyWordsInput">
+                            <button id="addKeyWordButton">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"
+                                    fill="none">
+                                    <rect width="35" height="35" rx="10" fill="#4A6EFF" />
+                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)"
+                                        fill="#F5F7F9" />
+                                    <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9" />
+                                </svg>
+                            </button>
                         </div>
-
-                        <ul class="option_list" id="option_list_second">
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Frontend</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Backend</span>
-                            </li>
-                        </ul>
+                        <ul class="option_list" id="keyWordsList"></ul>
                     </div>
                     <div class="item_footer">
                         <div class="item_title">
@@ -96,114 +83,18 @@
                             <span>Выбирите регион</span>
                         </div>
                         <div class="add_option">
-                            <!-- <input type="text" id="targetInput"> -->
-                            <div id="selectedValues"></div>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                <rect width="35" height="35" rx="10" fill="#4A6EFF"/>
-                                <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9"/>
-                            </svg>
+                            <input type="text" class="input_list" id="regionsInput">
+                            <button id="addRegionButton">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"
+                                    fill="none">
+                                    <rect width="35" height="35" rx="10" fill="#4A6EFF" />
+                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)"
+                                        fill="#F5F7F9" />
+                                    <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9" />
+                                </svg>
+                            </button>
                         </div>
-
-                        <ul class="option_list" id="option_list">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Москва</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Екатеринбург </span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Пермь </span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Иваново </span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Курск</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Владимир</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Казань</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Калуга</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Ростов-на-Дону</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Красноярк</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Калуга</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Ростов-на-Дону</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Красноярк</span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                                </svg>
-                                <span> Калуга</span>
-                            </li>
-                        </ul>
+                        <ul class="option_list" id="regionsList"></ul>
                     </div>
                     <div class="item_footer">
                         <div class="footer_btn">
@@ -231,6 +122,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- JQUERY END -->
     <!-- CUSTOM JS -->
-    <script src="main.js"></script>
+    
+    <!-- Скрипт, который отвечает за добавление и удаление слов в списке -->
+    <script src="regions_list.js"></script>
 </body>
 </html>
