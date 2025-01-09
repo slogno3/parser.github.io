@@ -1,205 +1,127 @@
-document.addEventListener("DOMContentLoaded", (event) => {
-
-    let settingTabs = document.querySelectorAll('.main_titles .title_link');
-    settingTabs.forEach(tabBtn => {
-        tabBtn.addEventListener('click', function(e){
+document.addEventListener("DOMContentLoaded", () => {
+    // --- Переключение вкладок ---
+    document.querySelectorAll('.main_titles .title_link').forEach(tabBtn => {
+        tabBtn.addEventListener('click', function (e) {
             e.preventDefault();
-            settingTabs.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active')
-        })            
+            document.querySelectorAll('.main_titles .title_link').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
     });
 
-    // Listdan itemni divga qo'shish
-    $('#option_list_second li').on('click', function() {
-        const value = $(this).text().trim();
+    // --- Обработка списков ---
+    function setupListHandlers(listId, selectedContainerId) {
+        const list = $(`#${listId}`);
+        const selectedContainer = $(`#${selectedContainerId}`);
 
-        // Yangi divga qiymatni va SVG ikonkasini qo‘shish
-        $('#selectedValuesSecond').append(
-            `<div class="selectedItem">
+        list.on('click', 'li', function () {
+            const value = $(this).text().trim();
+            selectedContainer.append(createSelectedItem(value));
+            $(this).remove();
+        });
+
+        selectedContainer.on('click', '.selectedItem', function () {
+            const value = $(this).find('.itemText').text().trim();
+            list.append(createListItem(value));
+            $(this).remove();
+        });
+
+        function createListItem(value) {
+            return `<li>
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
+                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
+                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
+                </svg>
+                <span>${value}</span>
+            </li>`;
+        }
+
+        function createSelectedItem(value) {
+            return `<div class="selectedItem">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
                     <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
                     <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
                 </svg>
                 <span class="itemText">${value}</span>
-            </div>`
-        );
-
-        // Li elementini olib tashlash
-        $(this).remove();
-
-        // Listga qaytgan div uchun yangi listener qo'shish
-        $('#option_list_second li').off('click').on('click', function() {
-            const value = $(this).text().trim();
-            $('#selectedValuesSecond').append(
-                `<div class="selectedItem">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                    </svg>
-                    <span class="itemText">${value}</span>
-                </div>`
-            );
-            $(this).remove();
-        });
-    });
-
-    // selectedItem bosilganida itemni listga qaytarish
-    $('#selectedValuesSecond').on('click', '.selectedItem', function() {
-        const itemText = $(this).find('.itemText').text().trim();
-        
-        // Itemni listga qaytarish
-        $('#option_list_second').append(
-            `<li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                </svg>
-                <span>${itemText}</span>
-            </li>`
-        );
-        
-        // Divni olib tashlash
-        $(this).remove();
-
-        // Yangi li elementini yana bosganda ishlashi uchun event listenerni qayta yangilaymiz
-        $('#option_list_second li').off('click').on('click', function() {
-            const value = $(this).text().trim();
-            $('#selectedValuesSecond').append(
-                `<div class="selectedItem">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                    </svg>
-                    <span class="itemText">${value}</span>
-                </div>`
-            );
-            $(this).remove();
-        });
-    });
-
-
-    // Listdan itemni divga qo'shish
-    $('#option_list li').on('click', function() {
-        const value = $(this).text().trim();
-
-        // Yangi divga qiymatni va SVG ikonkasini qo‘shish
-        $('#selectedValues').append(
-            `<div class="selectedItem">
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                </svg>
-                <span class="itemText">${value}</span>
-            </div>`
-        );
-
-        // Li elementini olib tashlash
-        $(this).remove();
-
-        // Listga qaytgan div uchun yangi listener qo'shish
-        $('#option_list li').off('click').on('click', function() {
-            const value = $(this).text().trim();
-            $('#selectedValues').append(
-                `<div class="selectedItem">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                    </svg>
-                    <span class="itemText">${value}</span>
-                </div>`
-            );
-            $(this).remove();
-        });
-    });
-
-    // selectedItem bosilganida itemni listga qaytarish
-    $('#selectedValues').on('click', '.selectedItem', function() {
-        const itemText = $(this).find('.itemText').text().trim();
-        
-        // Itemni listga qaytarish
-        $('#option_list').append(
-            `<li>
-                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                    <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                    <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                </svg>
-                <span>${itemText}</span>
-            </li>`
-        );
-        
-        // Divni olib tashlash
-        $(this).remove();
-
-        // Yangi li elementini yana bosganda ishlashi uchun event listenerni qayta yangilaymiz
-        $('#option_list li').off('click').on('click', function() {
-            const value = $(this).text().trim();
-            $('#selectedValues').append(
-                `<div class="selectedItem">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
-                        <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
-                        <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>
-                    </svg>
-                    <span class="itemText">${value}</span>
-                </div>`
-            );
-            $(this).remove();
-        });
-    });
-    
-    
-
-    const scrollContainer = document.querySelector('#option_list');
-    const boxShadow = document.querySelector('#box_shadow');
-
-    scrollContainer.addEventListener('scroll', function () {
-        const scrollTop = scrollContainer.scrollTop;
-        const scrollHeight = scrollContainer.scrollHeight;
-        const clientHeight = scrollContainer.clientHeight;
-
-        if (scrollTop + clientHeight >= scrollHeight) {
-            boxShadow.classList.add('hide-shadow');
-        } else {
-            boxShadow.classList.remove('hide-shadow');
+            </div>`;
         }
-    });
-    const scrollContainerSecond = document.querySelector('#option_list_second');
-    const boxShadowSecond = document.querySelector('#box_shadow_second');
+    }
 
-    scrollContainerSecond.addEventListener('scroll', function () {
-        const scrollTop = scrollContainerSecond.scrollTop;
-        const scrollHeight = scrollContainerSecond.scrollHeight;
-        const clientHeight = scrollContainerSecond.clientHeight;
+    setupListHandlers('option_list', 'selectedValues');
+    setupListHandlers('option_list_second', 'selectedValuesSecond');
 
-        if (scrollTop + clientHeight >= scrollHeight) {
-            boxShadowSecond.classList.add('hide-shadow');
-        } else {
-            boxShadowSecond.classList.remove('hide-shadow');
-        }
-    });
+    // --- Обработка скроллинга с тенями ---
+    function setupScrollShadow(containerId, shadowId) {
+        const scrollContainer = document.querySelector(`#${containerId}`);
+        const boxShadow = document.querySelector(`#${shadowId}`);
 
+        scrollContainer.addEventListener('scroll', () => {
+            const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+            if (scrollTop + clientHeight >= scrollHeight) {
+                boxShadow.classList.add('hide-shadow');
+            } else {
+                boxShadow.classList.remove('hide-shadow');
+            }
+        });
+    }
+
+    setupScrollShadow('option_list', 'box_shadow');
+    setupScrollShadow('option_list_second', 'box_shadow_second');
+
+    // --- Обработка выпадающего списка ---
     const inputField = document.getElementById('inputField');
     const dropdownList = document.getElementById('dropdownList');
-    
+
     inputField.addEventListener('focus', () => {
         dropdownList.style.display = 'block';
     });
-    
+
     inputField.addEventListener('blur', () => {
-        setTimeout(() => dropdownList.style.display = 'none', 200);
+        setTimeout(() => (dropdownList.style.display = 'none'), 200);
     });
 
-    dropdownList.addEventListener('click', (e) => {
+    dropdownList.addEventListener('click', e => {
         if (e.target.tagName === 'DIV') {
             inputField.value = e.target.textContent;
             dropdownList.style.display = 'none';
         }
     });
 
-    function filterFunction() {
+    inputField.addEventListener('input', () => {
         const filter = inputField.value.toUpperCase();
-        const options = dropdownList.getElementsByTagName('div');
-        for (let i = 0; i < options.length; i++) {
-            const txtValue = options[i].textContent || options[i].innerText;
-            options[i].style.display = txtValue.toUpperCase().indexOf(filter) > -1 ? '' : 'none';
-        }} 
+        Array.from(dropdownList.getElementsByTagName('div')).forEach(option => {
+            const text = option.textContent || option.innerText;
+            option.style.display = text.toUpperCase().includes(filter) ? '' : 'none';
+        });
+    });
+
+    // --- Сохранение данных в localStorage для Вакансий и Резюме ---
+    const sections = {
+        vacancy: ['job', 'salary_min', 'salary_max', 'location', 'work_schedule', 'skills'],
+        resume: ['name', 'experience', 'education', 'skills_resume', 'location_resume']
+    };
+
+    // Функция восстановления и сохранения данных
+    function setupStorageHandlers(sectionKey, fields) {
+        fields.forEach(field => {
+            const input = document.getElementById(field);
+            const savedValue = localStorage.getItem(`${sectionKey}_${field}`);
+            if (savedValue) input.value = savedValue;
+
+            input.addEventListener('input', () => {
+                localStorage.setItem(`${sectionKey}_${field}`, input.value);
+            });
+        });
+
+        document.querySelector(`.save_btn_${sectionKey}`).addEventListener('click', event => {
+            event.preventDefault();
+            fields.forEach(field => {
+                const input = document.getElementById(field);
+                localStorage.setItem(`${sectionKey}_${field}`, input.value);
+            });
+            alert(`${sectionKey === 'vacancy' ? 'Вакансия' : 'Резюме'} сохранено!`);
+        });
+    }
+
+    setupStorageHandlers('vacancy', sections.vacancy);
+    setupStorageHandlers('resume', sections.resume);
 });
