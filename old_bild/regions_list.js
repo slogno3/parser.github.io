@@ -10,6 +10,7 @@ function addItemToList(inputField, list) {
 
     // Кнопка, с помощью которой можно удалить новый элемент li
     const removeButton = document.createElement('button');
+    removeButton.classList.add("svg-button")
     removeButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35" fill="none">
                                     <rect x="0.5" y="0.5" width="34" height="34" rx="9.5" fill="#333746" stroke="#525357"/>
                                     <rect x="31" y="15" width="5" height="27" rx="2.5" transform="rotate(90 31 15)" fill="#F5F7F9"/>

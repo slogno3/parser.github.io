@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
     <title>ПАРСЕР</title>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -44,7 +46,7 @@
                         </div>
                         <div class="add_option">
                             <input type="text" class="input_list" id="keyWordsInput">
-                            <button id="addKeyWordButton">
+                            <button id="addKeyWordButton" class="svg-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"
                                     fill="none">
                                     <rect width="35" height="35" rx="10" fill="#4A6EFF" />
@@ -64,7 +66,7 @@
                         <div class="month_row">
                             <label class="month_item">
                                 <input type="radio" name="month_item" id="" checked>
-                               <span> 1 Месяц</span>
+                                <span> 1 Месяц</span>
                             </label>
                             <label class="month_item">
                                 <input type="radio" name="month_item" id="">
@@ -84,7 +86,7 @@
                         </div>
                         <div class="add_option">
                             <input type="text" class="input_list" id="regionsInput">
-                            <button id="addRegionButton">
+                            <button id="addRegionButton" class="svg-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"
                                     fill="none">
                                     <rect width="35" height="35" rx="10" fill="#4A6EFF" />
@@ -93,6 +95,7 @@
                                     <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9" />
                                 </svg>
                             </button>
+                            <ul id="dropdown" class="dropdown-list"></ul>
                         </div>
                         <ul class="option_list" id="regionsList"></ul>
                     </div>
@@ -118,12 +121,15 @@
     <!-- SETTINGS MODAL END -->
 
     <!-- JQUERY -->
-     <!-- jQuery CDN -->
+    <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- JQUERY END -->
     <!-- CUSTOM JS -->
-    
+
     <!-- Скрипт, который отвечает за добавление и удаление слов в списке -->
     <script src="regions_list.js"></script>
+    <!-- Скрипт, который отвечает за  -->
+    <script src="dropdown.js"></script>
 </body>
+
 </html>

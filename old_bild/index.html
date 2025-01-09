@@ -45,8 +45,8 @@
                             <span>Добавьте профессию/должность</span>
                         </div>
                         <div class="add_option">
-                            <input type="text" class="input_list" id="keyWordsInput">
-                            <button id="addKeyWordButton">
+                            <input type="text" class="input_list" placeholder="Введите текст..." id="keyWordsInput">
+                            <button id="addKeyWordButton" class="svg-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"
                                     fill="none">
                                     <rect width="35" height="35" rx="10" fill="#4A6EFF" />
@@ -84,8 +84,8 @@
                             <span>Выберите регион</span>
                         </div>
                         <div class="add_option">
-                            <input type="text" class="input_list" id="regionsInput">
-                            <button id="addRegionButton">
+                            <input type="text" class="input_list" placeholder="Введите текст..." id="regionsInput">
+                            <button id="addRegionButton" class="svg-button">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 35 35"
                                     fill="none">
                                     <rect width="35" height="35" rx="10" fill="#4A6EFF" />
@@ -94,6 +94,7 @@
                                     <rect x="15" y="4" width="5" height="27" rx="2.5" fill="#F5F7F9" />
                                 </svg>
                             </button>
+                            <ul id="dropdown" class="dropdown-list"></ul>
                         </div>
                         <ul class="option_list" id="regionsList"></ul>
                     </div>
@@ -126,6 +127,8 @@
 
     <!-- Скрипт, который отвечает за добавление и удаление слов в списке -->
     <script src="regions_list.js"></script>
+    <!-- Скрипт, который отвечает за  -->
+    <script src="dropdown.js"></script>
 </body>
 
 </html>
