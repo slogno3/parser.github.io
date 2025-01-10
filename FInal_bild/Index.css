@@ -254,7 +254,7 @@ background-color: #000;
 border: 1px solid #ccc;
 max-height: 240px; /* Ограничение высоты для 6 элементов */
 overflow-y: auto;  /* Прокрутка если элементов больше 6 */
-z-index: 1;
+z-index: 999; /* Чтобы интерфейс закрывал собой кнопку ниже */
 display: none; /* По умолчанию скрыт */
 }
 
