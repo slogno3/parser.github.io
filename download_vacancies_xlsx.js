@@ -12,7 +12,7 @@ downloadVananciesButton.addEventListener('click', async () => {
     const monthPeriodParam = getSelectedMonthValue()
     
     // Формируем URL с параметрами
-    const url = `https://localhost:44356/api/Vacancy/parse?keyWords=${keyWordsParam}&regions=${regionsParam}&publicationAtMonth=${monthPeriodParam}`;
+    const url = `${CONFIG.host}/api/Vacancy/parse?keyWords=${keyWordsParam}&regions=${regionsParam}&publicationAtMonth=${monthPeriodParam}`;
 
     // Открываем ссылку в новой вкладке
     window.open(url, '_blank');

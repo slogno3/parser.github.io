@@ -11,7 +11,7 @@ downloadVananciesButton.addEventListener('click', async () => {
     const regionsParam = regions.join(',');;
     
     // Формируем URL с параметрами
-    const url = `https://localhost:44356/api/Resume/parse?keyWords=${keyWordsParam}&regions=${regionsParam}`;
+    const url = `${CONFIG.host}/api/Resume/parse?keyWords=${keyWordsParam}&regions=${regionsParam}`;
 
     // Открываем ссылку в новой вкладке
     window.open(url, '_blank');
