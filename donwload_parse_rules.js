@@ -1,4 +1,4 @@
-async function sendRequest() {
+async function getSettings() {
     try {
         const response = await fetch(`${CONFIG.host}/api/ParseRules`); // Замените на ваш реальный URL
         if (!response.ok) {
@@ -9,6 +9,75 @@ async function sendRequest() {
     } catch (error) {
         console.error('Ошибка:', error.message);
     }
+}
+
+async function saveSettings(jsonData, selectedIndex) {
+    //узнаем, какие сейчас выбраны настройки: для вакансий или для резюме
+    const selectedSite = jsonData[selectedIndex];
+    //узнаем, какие сейчас выбраны настройки: для вакансий или для резюме
+    vacancySettingsButton = document.getElementById('vacancy_setting');
+    resumeSettingsButton = document.getElementById('resume_setting');
+
+    const container = document.getElementById('settings-containter');
+
+    // Находим все элементы .setting_item
+    const settingItems = container.querySelectorAll('.setting_item');
+
+    settingItems.forEach(item => {
+        const titleElement = item.querySelector('.item_title'); // Находим элемент с текстом
+        const inputElement = item.querySelector('.item_input input'); // Находим input
+
+        const titleText = titleElement.textContent.trim().slice(0, -1); // название насйтроуи
+        const inputValue = inputElement.value; // значение настройки
+
+        if (vacancySettings.classList.contains('active')) {
+            vacancyPageRules = selectedSite.vacancyParseRule;
+            pageWithVacancies = selectedSite.pageWithVacanciesParseRule
+            // Перебираем каждый .setting_item
+            if (titleElement && inputElement) {
+                if (titleText in vacancyPageRules) {
+                    vacancyPageRules[titleText] = inputValue;
+                }
+                if (titleText in pageWithVacancies) {
+                    pageWithVacancies[titleText] = inputValue;
+                }
+            }
+        }
+        else {
+            resumePageRules = selectedSite.resumeParseRule;
+            pageWithResumes = selectedSite.pageWithResumesParseRule
+            // Перебираем каждый .setting_item
+            if (titleElement && inputElement) {
+                if (titleText in resumePageRules) {
+                    resumePageRules[titleText] = inputValue;
+                }
+                if (titleText in pageWithResumes) {
+                    pageWithResumes[titleText] = inputValue;
+                }
+            }
+        }
+    });
+
+    //Отпрвка запроса
+    const url = `${CONFIG.host}/api/ParseRules`;
+    fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json' // Указываем, что тело в формате JSON
+        },
+        body: JSON.stringify(selectedSite) // Преобразуем объект в JSON-строку
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP ошибка: ${response.status}`);
+            }
+        })
+        .then(result => {
+            console.log('Настройки успешно сохранены:');
+        })
+        .catch(error => {
+            console.error('Ошибка при запросе:', error.message);
+        });
 }
 
 //выводит список настроек
@@ -114,7 +183,19 @@ function drawSettings(jsonData, selectedIndex) {
 // Ваша функция для работы с данными
 async function init() {
 
-    const jsonData = await sendRequest()
+    const jsonData = await getSettings()
+
+    // Сортировка по полю siteName
+    jsonData.sort((a, b) => {
+        // Сравниваем строковые значения поля siteName
+        if (a.siteName < b.siteName) {
+            return -1;
+        }
+        if (a.siteName > b.siteName) {
+            return 1;
+        }
+        return 0;
+    });
 
     const dropdown = document.getElementById('site-dropdown');
     // Заполняем выпадающий список
@@ -150,6 +231,13 @@ async function init() {
         resumeSettings.classList.add('active');
         selectedIndex = document.getElementById('site-dropdown').value;
         drawSettings(jsonData, selectedIndex)
+    });
+
+    const saveButton = document.getElementById('save_btn')
+    saveButton.addEventListener('click', () => {
+        selectedIndex = dropdown.value;
+        saveSettings(jsonData, dropdown.value);
+        location.reload();
     });
 }
 
