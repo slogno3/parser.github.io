@@ -7,11 +7,13 @@ downloadVananciesButton.addEventListener('click', async () => {
     const keyWords = getValuesFromUl(keyWordsList)
     const regions = getValuesFromUl(regionsList)
 
-    const keyWordsParam = keyWords.join(',');;
-    const regionsParam = regions.join(',');;
+    const params = new URLSearchParams({
+        keyWords: keyWords.join(','),
+        regions:  regions.join(','),
+    });
     
     // Формируем URL с параметрами
-    const url = `${CONFIG.host}/api/Resume/parse?keyWords=${keyWordsParam}&regions=${regionsParam}`;
+    const url = `${CONFIG.host}/api/Resume/parse?${params.toString()}`;
 
     // Открываем ссылку в новой вкладке
     window.open(url, '_blank');

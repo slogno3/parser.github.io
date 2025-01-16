@@ -32,6 +32,10 @@ body {
     z-index: 1;
 }
 
+.blue_btn:hover {
+    cursor: pointer;
+}
+
 .border_btn {
     color: #E1E3E6;
     font-family: Inter;

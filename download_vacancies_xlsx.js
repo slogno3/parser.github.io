@@ -7,12 +7,14 @@ downloadVananciesButton.addEventListener('click', async () => {
     const keyWords = getValuesFromUl(keyWordsList)
     const regions = getValuesFromUl(regionsList)
 
-    const keyWordsParam = keyWords.join(',');;
-    const regionsParam = regions.join(',');;
-    const monthPeriodParam = getSelectedMonthValue()
+    const params = new URLSearchParams({
+        keyWords: keyWords.join(','),
+        regions:  regions.join(','),
+        publicationAtMonth: getSelectedMonthValue()
+    });
     
     // Формируем URL с параметрами
-    const url = `${CONFIG.host}/api/Vacancy/parse?keyWords=${keyWordsParam}&regions=${regionsParam}&publicationAtMonth=${monthPeriodParam}`;
+    const url = `${CONFIG.host}/api/Vacancy/parse?${params.toString()}`;
 
     // Открываем ссылку в новой вкладке
     window.open(url, '_blank');
