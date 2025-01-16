@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="settings.css">
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <title>Настройки</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header_row">
+                <div class="header_logo">
+                    ПАРСЕР
+                </div>
+                <div class="header_links">
+                    <div class="link_row">
+                        <a href="index.html" class="link_item border_btn">
+                            Вернуться к парсеру
+                        </a>
+                    </div>
+                    <a href="#" class="settings blue_btn">
+                        Настройки
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SETTINGS MODAL -->
+    <div class="settings_main">
+        <div class="container">
+            <div class="main_titles">
+                <a href="#" class="title_link active" id="vacancy_setting">
+                    Вакансии
+                </a>
+                <a href="#" class="title_link"  id="resume_setting">
+                    Резюме
+                </a>
+                <a>
+                    <div class="tabs-container">
+                        <select id="site-dropdown" class="tabs-button">
+                            
+                        </select>
+                    </div>
+                </a>
+            </div>
+
+            <div class="settings_card">
+                <form action="">
+                    <div class="setting_row" id="settings-containter">
+                    </div>
+                    <div class="save_btn">
+                        <button class="blue_btn" id="save_btn">Сохранить изменения</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SETTINGS MODAL END -->
+    <script src="config.js"></script>
+    <script src="donwload_parse_rules.js"></script>
+</body>
+
+</html>
